@@ -10,13 +10,14 @@ def hello_world():
 
 @app.route("/user/<int:id>")
 def user(id):
-    return jsonify(id=id, username='bojie', head_url=u'http://cniao5-imgs.qiniudn.com/FmmzD0PdroWkFzqVFEUTKO-BQqOP')
+    return jsonify(id=id, username='Bojie', head_url=u'https://avatars2.githubusercontent.com/u/7081069?v=3&s=460')
 
 
 @app.route("/user/info")
 def user_info():
     id = request.args.get("id")
-    return jsonify(id=id, username='bojie', head_url=u'http://cniao5-imgs.qiniudn.com/FmmzD0PdroWkFzqVFEUTKO-BQqOP')
+    print (request.headers)
+    return jsonify(id=id, username='Bojie', head_url=u'https://avatars2.githubusercontent.com/u/7081069?v=3&s=460')
 
 
 @app.route("/login", methods=["POST"])

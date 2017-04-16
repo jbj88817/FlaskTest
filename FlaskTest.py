@@ -30,5 +30,17 @@ def login():
     return jsonify(success=0, message=u'username or password error')
 
 
+@app.route("/login/json", methods=["POST"])
+def login_json():
+    json = request.get_json()
+    username = json.get("username")
+    password = json.get("password")
+
+    if username == 'bojie' and password == '123456':
+        return jsonify(success=1, message=u'login success')
+
+    return jsonify(success=0, message=u'username or password error')
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0')

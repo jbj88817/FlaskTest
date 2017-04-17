@@ -8,6 +8,16 @@ def hello_world():
     return 'Hello World!'
 
 
+@app.route("/user/new", methods=["POST"])
+def user_create():
+    json = request.get_json()
+    print (json)
+    id = json.get("id")
+    username = json.get("username")
+
+    return jsonify(success=1, message="Create User Successfully", id=id, username=username)
+
+
 @app.route("/user/<int:id>")
 def user(id):
     return jsonify(id=id, username='Bojie', head_url=u'https://avatars2.githubusercontent.com/u/7081069?v=3&s=460')
@@ -40,7 +50,7 @@ def login_json():
     if username == 'bojie' and password == '123456':
         return jsonify(success=1, message=u'login success')
 
-    return jsonify(success=0, message=u'username or password error')
+    return jsonify(success=0, message=u'username or password error', user_id=1)
 
 
 if __name__ == '__main__':

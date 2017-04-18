@@ -48,9 +48,9 @@ def login_json():
     password = json.get("password")
 
     if username == 'bojie' and password == '123456':
-        return jsonify(success=1, message=u'login success')
+        return jsonify(success=1, message=u'login success', id=1)
 
-    return jsonify(success=0, message=u'username or password error', user_id=1)
+    return jsonify(success=0, message=u'username or password error')
 
 
 if __name__ == '__main__':

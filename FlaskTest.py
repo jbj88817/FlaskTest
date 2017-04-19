@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, request
+import jsonpickle
 
 app = Flask(__name__)
 
@@ -51,6 +52,24 @@ def login_json():
         return jsonify(success=1, message=u'login success', id=1)
 
     return jsonify(success=0, message=u'username or password error')
+
+
+@app.route("/courses")
+def courses():
+    course1 = Course(id="1", name="live app")
+    course2 = Course(id="1", name="mobile app")
+
+    courses = {course1, course2}
+
+    json = jsonpickle.encode(courses, unpicklable=False)
+
+    print json
+    return json
+
+
+class Course():
+    def __init__(self, id, name):
+        self.name = name;
 
 
 if __name__ == '__main__':
